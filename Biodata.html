@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata</title>
+    <style>
+        .container {
+            margin: 0 16vw;
+        }
+
+        table {
+            width: 100%;
+            border: 1px solid black;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        tbody>tr>td {
+            padding: 8px;
+        }
+
+        td>input,
+        textarea {
+            width: 95%;
+        }
+
+        button {
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form>
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="3" class="center">
+                            <h2>Biodata Mahasiswa Universitas Terbuka</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="center">
+                            <img
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsEHtRMCIeexhKZdscHf8VJnWB_vC5YcofVz7ZGcRv1Q&s" />
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Nama</td>
+                        <td>:</td>
+                        <td>
+                            <input type="text" id="nama" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>NIM</td>
+                        <td>:</td>
+                        <td>
+                            <input type="text" id="nim" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jenis Kelamin</td>
+                        <td>:</td>
+                        <td>
+                            <div>
+                                <input type="radio" id="lakiLaki" name="jenisKelamin" value="Laki-Laki" />
+                                <label for="lakiLaki">Laki-laki</label>
+                                <input type="radio" id="perempuan" name="jenisKelamin" value="Perempuan" />
+                                <label for="perempuan">Perempuan</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Program Studi</td>
+                        <td>:</td>
+                        <td>
+                            <input type="text" id="programStudi" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fakultas</td>
+                        <td>:</td>
+                        <td>
+                            <input type="text" id="fakultas" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Lahir</td>
+                        <td>:</td>
+                        <td>
+                            <input type="date" id="tglLahir" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tempat Lahir</td>
+                        <td>:</td>
+                        <td>
+                            <input type="text" id="tempatLahir" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Agama</td>
+                        <td>:</td>
+                        <td>
+                            <select id="agama">
+                                <option value="Islam">Islam</option>
+                                <option value="Kristen">Kristen</option>
+                                <option value="Katholik">Katholik</option>
+                                <option value="Hindu">Hindu</option>
+                                <option value="Buddha">Buddha</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>:</td>
+                        <td>
+                            <textarea id="alamat" rows="3"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="center">
+                            <button type="button" onclick="submitData()">Submit</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+
+        <div id="submittedData"></div>
+    </div>
+</body>
+
+<script>
+    function submitData() {
+        // get value from input
+        const nama = document.getElementById("nama").value;
+        const nim = document.getElementById("nim").value;
+        const jenisKelamin = document.querySelector('input[name="jenisKelamin"]:checked').value;
+        const programStudi = document.getElementById("programStudi").value;
+        const fakultas = document.getElementById("fakultas").value;
+        const tglLahir = document.getElementById("tglLahir").value;
+        const tempatLahir = document.getElementById("tempatLahir").value;
+        const agama = document.getElementById("agama").value;
+        const alamat = document.getElementById("alamat").value;
+
+        const submittedDataDiv = document.createElement("div");
+        submittedDataDiv.innerHTML = "<h3>Tampilkan Data</h3>";
+        submittedDataDiv.innerHTML += `<p>Nama: ${nama}</p>`;
+        submittedDataDiv.innerHTML += `<p>NIM: ${nim}</p>`;
+        submittedDataDiv.innerHTML += `<p>Jenis Kelamin: ${jenisKelamin}</p>`;
+        submittedDataDiv.innerHTML += `<p>Program Studi: ${programStudi}</p>`;
+        submittedDataDiv.innerHTML += `<p>Fakultas: ${fakultas}</p>`;
+        submittedDataDiv.innerHTML += `<p>Tanggal Lahir: ${tglLahir}</p>`;
+        submittedDataDiv.innerHTML += `<p>Tempat Lahir: ${tempatLahir}</p>`;
+        submittedDataDiv.innerHTML += `<p>Agama: ${agama}</p>`;
+        submittedDataDiv.innerHTML += `<p>Alamat: ${alamat}</p>`;
+
+        document.getElementById("submittedData").appendChild(submittedDataDiv);
+    }
+</script>
+
+</html>
